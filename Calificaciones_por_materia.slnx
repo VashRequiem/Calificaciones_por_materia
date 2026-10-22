@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Calificaciones_por_materia/Capa_presentacion.csproj" />
+  <Project Path="Capa_Datos/Capa_Datos.csproj" />
+  <Project Path="Capa_negocio/Capa_negocio.csproj" />
+</Solution>
