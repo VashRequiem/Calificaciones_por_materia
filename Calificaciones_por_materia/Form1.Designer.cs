@@ -28,12 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            dgvMateria = new DataGridView();
+            btnListar = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvMateria).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvMateria
+            // 
+            dgvMateria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMateria.Location = new Point(58, 102);
+            dgvMateria.Name = "dgvMateria";
+            dgvMateria.Size = new Size(240, 150);
+            dgvMateria.TabIndex = 0;
+            // 
+            // btnListar
+            // 
+            btnListar.Location = new Point(58, 73);
+            btnListar.Name = "btnListar";
+            btnListar.Size = new Size(75, 23);
+            btnListar.TabIndex = 1;
+            btnListar.Text = "Listar materia";
+            btnListar.UseVisualStyleBackColor = true;
+            btnListar.Click += btnListar_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnListar);
+            Controls.Add(dgvMateria);
+            Name = "Form1";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)dgvMateria).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dgvMateria;
+        private Button btnListar;
     }
 }
