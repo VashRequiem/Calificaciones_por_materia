@@ -1,6 +1,6 @@
 ﻿namespace Calificaciones_por_materia
 {
-    partial class Form1
+    partial class FrmMateria
     {
         /// <summary>
         ///  Required designer variable.

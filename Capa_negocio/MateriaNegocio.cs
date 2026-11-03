@@ -10,7 +10,6 @@ namespace CapaNegocio
     {
         public static DataTable Listar() 
         {
-            
             return MateriaDatos.ListarMateria();
         }
     }

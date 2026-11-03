@@ -2,9 +2,9 @@ using CapaNegocio;
 
 namespace Calificaciones_por_materia
 {
-    public partial class Form1 : Form
+    public partial class FrmMateria : Form
     {
-        public Form1()
+        public FrmMateria()
         {
             InitializeComponent();
         }
@@ -17,7 +17,7 @@ namespace Calificaciones_por_materia
             }
             catch (Exception ex) 
             {
-                MessageBox.Show("No se pudo cargar la lista: " + ex.Message);
+                MessageBox.Show("No se pudo cargar la lista de materias: " + ex.Message);
             }
         }
     }
