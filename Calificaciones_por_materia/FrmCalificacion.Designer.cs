@@ -32,6 +32,10 @@
             btnListar = new Button();
             cboMateria = new ComboBox();
             cboEstudiante = new ComboBox();
+            btnAgregar = new Button();
+            txtNota = new TextBox();
+            lblNota = new Label();
+            btnEliminar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCalificacion).BeginInit();
             SuspendLayout();
             // 
@@ -71,11 +75,51 @@
             cboEstudiante.TabIndex = 3;
             cboEstudiante.SelectedIndexChanged += cboEstudiante_SelectedIndexChanged;
             // 
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(622, 386);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(75, 23);
+            btnAgregar.TabIndex = 4;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
+            // txtNota
+            // 
+            txtNota.Location = new Point(384, 377);
+            txtNota.Name = "txtNota";
+            txtNota.Size = new Size(100, 23);
+            txtNota.TabIndex = 5;
+            // 
+            // lblNota
+            // 
+            lblNota.AutoSize = true;
+            lblNota.Location = new Point(384, 359);
+            lblNota.Name = "lblNota";
+            lblNota.Size = new Size(33, 15);
+            lblNota.TabIndex = 6;
+            lblNota.Text = "Nota";
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Location = new Point(623, 353);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(75, 23);
+            btnEliminar.TabIndex = 7;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
             // FrmCalificacion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnEliminar);
+            Controls.Add(lblNota);
+            Controls.Add(txtNota);
+            Controls.Add(btnAgregar);
             Controls.Add(cboEstudiante);
             Controls.Add(cboMateria);
             Controls.Add(btnListar);
@@ -85,6 +129,7 @@
             Load += FrmCalificacion_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCalificacion).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -93,5 +138,9 @@
         private Button btnListar;
         private ComboBox cboMateria;
         private ComboBox cboEstudiante;
+        private Button btnAgregar;
+        private TextBox txtNota;
+        private Label lblNota;
+        private Button btnEliminar;
     }
 }

@@ -8,6 +8,8 @@ namespace CapaDatos
 {
     public class CalificacionDatos
     {
+        //los datatale me permiten tomar los datos de sql y llamarlos para que se muestren en los respectivos forms
+        //Un DataTable es una tabla en memoria, y el método la devuelve hacia arriba para que el negocio y el formulario la muestren.
         public static DataTable ListarCalificacion()
         {
             var tabla = new DataTable();
@@ -18,26 +20,70 @@ namespace CapaDatos
             using (var adaptador = new SqlDataAdapter(comando))
 
             {
-                adaptador.Fill(tabla);
+                adaptador.Fill(tabla); // Fill abre la conexión, ejecuta el SELECT y llena la tabla.
             }
             return tabla;
 
         }
 
+        // Aqui se inserta una calificación nueva.
         public static void Agregar(int idEstudiante, int idMateria, decimal nota  ) 
         {
             using (var conexion = new SqlConnection(Conexion.Cadena))
             using (var comando = new SqlCommand(
-                "INSERT INTO Calificaciones (idEstudiante, idMateria, nota) Values (@idEstudiante, @idMateria, @nota)" + conexion))
+                "INSERT INTO Calificaciones (idEstudiante, idMateria, nota) Values (@idEstudiante, @idMateria, @nota)", conexion))
             {
+                // Los parámetros (@) evitan pegar valores dentro del texto SQL,
+                // lo que previene la inyección SQL.
                 comando.Parameters.AddWithValue("@idEstudiante", idEstudiante);
                 comando.Parameters.AddWithValue("@idMateria", idMateria);
                 comando.Parameters.AddWithValue("@nota", nota);
+
+                conexion.Open();
+                // ExecuteNonQuery se usa cuando NO esperas filas de vuelta.
+                comando.ExecuteNonQuery();  //Aca ejecuta los INSERT , UPDATE, DELETE.
             }
         }
 
-        public static void Existe() 
+
+        // Devuelve true si ya existe una calificación para estudiante + materia.
+        //  Lo usa el negocio para dar un mensaje claro
+        // antes de que el UNIQUE de la base de datos de error.
+        public static bool Existe(int idEstudiante, int idMateria) 
         {
+            int cantidad;
+            using (var conexion = new SqlConnection(Conexion.Cadena))
+            using (var comando = new SqlCommand(
+                "SELECT COUNT(*) FROM Calificaciones WHERE idEstudiante = @idEstudiante AND idMateria = @idMateria", conexion))
+            {
+               
+                comando.Parameters.AddWithValue("@idEstudiante", idEstudiante);
+                comando.Parameters.AddWithValue("@idMateria", idMateria);
+
+                conexion.Open();
+                cantidad = Convert.ToInt32(comando.ExecuteScalar());   //ExecuteScalar devuelve UN solo valor(la primera celda del resultado):
+                                                                       // aquí, el conteo de coincidencias.
+            }
+            if (cantidad > 0) 
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static void Eliminar(int idCalificaciones) 
+        {
+            using (var conexion = new SqlConnection(Conexion.Cadena))
+            using (var comando = new SqlCommand(
+                "DELETE FROM Calificaciones WHERE idCalificaciones = @idCalificaciones", conexion))
+            {
+                comando.Parameters.AddWithValue("@idCalificaciones", idCalificaciones);
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
 
         }
     }
