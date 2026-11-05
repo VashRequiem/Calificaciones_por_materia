@@ -108,7 +108,7 @@ namespace CapaPresentacion
         {
             try
             {
-                if (dgvCalificacion.CurrentRow == null) 
+                if (dgvCalificacion.CurrentRow == null)
                 {
                     MessageBox.Show("Seleccione una fila de la lista");
                     return;
@@ -117,7 +117,7 @@ namespace CapaPresentacion
                 int id = Convert.ToInt32(dgvCalificacion.CurrentRow.Cells["idCalificaciones"].Value);
 
                 DialogResult respuesta = MessageBox.Show("Eliminar este registro?", "Confirmar", MessageBoxButtons.YesNo);
-                if (respuesta == DialogResult.Yes) 
+                if (respuesta == DialogResult.Yes)
                 {
                     CalificacionNegocio.Eliminar(id);
                     dgvCalificacion.DataSource = CalificacionNegocio.Listar();
@@ -126,6 +126,71 @@ namespace CapaPresentacion
             catch (Exception ex)
             {
 
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgvCalificacion_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvCalificacion.CurrentRow != null)
+            {
+                txtNota.Text = dgvCalificacion.CurrentRow.Cells["nota"].Value.ToString();
+            }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvCalificacion.CurrentRow == null)
+                {
+                    MessageBox.Show("Seleccione la fila para modificar su nota.");
+                    return;
+                }
+                decimal nota;
+                if (!decimal.TryParse(txtNota.Text, out nota))
+                {
+                    MessageBox.Show("Introduzca una nota valida (solo numeros).");
+                    return;
+                }
+                var calificacion = new Calificacion();
+                calificacion.IdCalificaciones = Convert.ToInt32(dgvCalificacion.CurrentRow.Cells["idCalificaciones"].Value);
+                calificacion.Nota = nota;
+
+                CalificacionNegocio.Modificar(calificacion);
+                txtNota.Clear();
+                dgvCalificacion.DataSource = CalificacionNegocio.Listar();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Dejan las dos etiquetas vacías ("" es un texto sin caracteres), es decir que
+                //se hace al inicio para borrar el resultado de la consulta anterior.
+                lblPromedio.Text = "";
+                lblCondicion.Text = "";
+
+                //leo que estudiante eligio el usuario
+                int idEstudiante = Convert.ToInt32(cboEstudiante.SelectedValue);
+                //le pido a negocio sus calificaciones y las pongo en el grid
+                DataTable tabla =  CalificacionNegocio.ListarPorEstudiante(idEstudiante);
+                dgvCalificacion.DataSource = tabla;
+
+                decimal promedio = CalificacionNegocio.CalcularPromedio(tabla);
+                string condicion = CalificacionNegocio.ObtenerCondicion(promedio);
+
+                lblPromedio.Text = "Promedio: " + Math.Round(promedio, 2); //uso Math.Round para redondear a dos decimales. C# convierte el número a texto solo
+                lblCondicion.Text = condicion; //Muestra lo que devolvió ObtenerCondicion
+            }
+            catch (Exception ex) 
+            {
                 MessageBox.Show(ex.Message);
             }
         }

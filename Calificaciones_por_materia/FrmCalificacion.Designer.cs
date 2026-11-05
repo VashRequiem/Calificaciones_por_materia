@@ -36,20 +36,29 @@
             txtNota = new TextBox();
             lblNota = new Label();
             btnEliminar = new Button();
+            btnModificar = new Button();
+            btnConsultar = new Button();
+            lblPromedio = new Label();
+            lblCondicion = new Label();
+            lblEstudiante = new Label();
+            label2 = new Label();
+            lblCalificaciones = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCalificacion).BeginInit();
             SuspendLayout();
             // 
             // dgvCalificacion
             // 
+            dgvCalificacion.BackgroundColor = Color.Linen;
             dgvCalificacion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCalificacion.Location = new Point(107, 152);
+            dgvCalificacion.Location = new Point(52, 203);
             dgvCalificacion.Name = "dgvCalificacion";
-            dgvCalificacion.Size = new Size(184, 247);
+            dgvCalificacion.Size = new Size(506, 184);
             dgvCalificacion.TabIndex = 0;
+            dgvCalificacion.CellClick += dgvCalificacion_CellClick;
             // 
             // btnListar
             // 
-            btnListar.Location = new Point(107, 111);
+            btnListar.Location = new Point(321, 174);
             btnListar.Name = "btnListar";
             btnListar.Size = new Size(75, 23);
             btnListar.TabIndex = 1;
@@ -60,7 +69,7 @@
             // cboMateria
             // 
             cboMateria.FormattingEnabled = true;
-            cboMateria.Location = new Point(398, 120);
+            cboMateria.Location = new Point(201, 99);
             cboMateria.Name = "cboMateria";
             cboMateria.Size = new Size(121, 23);
             cboMateria.TabIndex = 2;
@@ -69,7 +78,7 @@
             // cboEstudiante
             // 
             cboEstudiante.FormattingEnabled = true;
-            cboEstudiante.Location = new Point(549, 123);
+            cboEstudiante.Location = new Point(52, 99);
             cboEstudiante.Name = "cboEstudiante";
             cboEstudiante.Size = new Size(121, 23);
             cboEstudiante.TabIndex = 3;
@@ -77,7 +86,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(622, 386);
+            btnAgregar.Location = new Point(402, 174);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 4;
@@ -87,7 +96,7 @@
             // 
             // txtNota
             // 
-            txtNota.Location = new Point(384, 377);
+            txtNota.Location = new Point(651, 335);
             txtNota.Name = "txtNota";
             txtNota.Size = new Size(100, 23);
             txtNota.TabIndex = 5;
@@ -95,7 +104,7 @@
             // lblNota
             // 
             lblNota.AutoSize = true;
-            lblNota.Location = new Point(384, 359);
+            lblNota.Location = new Point(612, 338);
             lblNota.Name = "lblNota";
             lblNota.Size = new Size(33, 15);
             lblNota.TabIndex = 6;
@@ -103,19 +112,94 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(623, 353);
+            btnEliminar.BackColor = Color.Crimson;
+            btnEliminar.Location = new Point(483, 174);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(75, 23);
             btnEliminar.TabIndex = 7;
             btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += btnEliminar_Click;
+            // 
+            // btnModificar
+            // 
+            btnModificar.Location = new Point(662, 364);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(75, 23);
+            btnModificar.TabIndex = 8;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
+            // 
+            // btnConsultar
+            // 
+            btnConsultar.Location = new Point(662, 132);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(75, 23);
+            btnConsultar.TabIndex = 9;
+            btnConsultar.Text = "Consultar";
+            btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
+            // 
+            // lblPromedio
+            // 
+            lblPromedio.AutoSize = true;
+            lblPromedio.Location = new Point(703, 99);
+            lblPromedio.Name = "lblPromedio";
+            lblPromedio.Size = new Size(59, 15);
+            lblPromedio.TabIndex = 10;
+            lblPromedio.Text = "Promedio";
+            // 
+            // lblCondicion
+            // 
+            lblCondicion.AutoSize = true;
+            lblCondicion.Location = new Point(623, 99);
+            lblCondicion.Name = "lblCondicion";
+            lblCondicion.Size = new Size(62, 15);
+            lblCondicion.TabIndex = 11;
+            lblCondicion.Text = "Condicion";
+            // 
+            // lblEstudiante
+            // 
+            lblEstudiante.AutoSize = true;
+            lblEstudiante.Location = new Point(52, 81);
+            lblEstudiante.Name = "lblEstudiante";
+            lblEstudiante.Size = new Size(62, 15);
+            lblEstudiante.TabIndex = 12;
+            lblEstudiante.Text = "Estudiante";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(201, 81);
+            label2.Name = "label2";
+            label2.Size = new Size(47, 15);
+            label2.TabIndex = 13;
+            label2.Text = "Materia";
+            // 
+            // lblCalificaciones
+            // 
+            lblCalificaciones.AutoSize = true;
+            lblCalificaciones.BackColor = Color.Snow;
+            lblCalificaciones.Location = new Point(52, 182);
+            lblCalificaciones.Name = "lblCalificaciones";
+            lblCalificaciones.Size = new Size(80, 15);
+            lblCalificaciones.TabIndex = 14;
+            lblCalificaciones.Text = "Calificaciones";
             // 
             // FrmCalificacion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Beige;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblCalificaciones);
+            Controls.Add(label2);
+            Controls.Add(lblEstudiante);
+            Controls.Add(lblCondicion);
+            Controls.Add(lblPromedio);
+            Controls.Add(btnConsultar);
+            Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
             Controls.Add(lblNota);
             Controls.Add(txtNota);
@@ -142,5 +226,12 @@
         private TextBox txtNota;
         private Label lblNota;
         private Button btnEliminar;
+        private Button btnModificar;
+        private Button btnConsultar;
+        private Label lblPromedio;
+        private Label lblCondicion;
+        private Label lblEstudiante;
+        private Label label2;
+        private Label lblCalificaciones;
     }
 }
