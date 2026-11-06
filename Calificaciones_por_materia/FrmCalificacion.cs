@@ -20,7 +20,8 @@ namespace CapaPresentacion
         {
             try
             {
-                dgvCalificacion.DataSource = CalificacionNegocio.Listar();
+                //dgvCalificacion.DataSource = CalificacionNegocio.Listar();
+                 MostrarCalificaciones(CalificacionNegocio.Listar());
             }
             catch (Exception ex)
             {
@@ -95,7 +96,8 @@ namespace CapaPresentacion
                 CalificacionNegocio.Agregar(calificacion); //Si negocio lanza un throw el método se detiene aquí y salta directo al catch
                 //Esta parte me ayuda a limpiar los campos después de guardar y mostrar los datos actualizados en el grid.
                 txtNota.Clear();
-                dgvCalificacion.DataSource = CalificacionNegocio.Listar();
+                //dgvCalificacion.DataSource = CalificacionNegocio.Listar();
+                MostrarCalificaciones(CalificacionNegocio.Listar());
             }
             catch (Exception ex)
             {
@@ -120,7 +122,8 @@ namespace CapaPresentacion
                 if (respuesta == DialogResult.Yes)
                 {
                     CalificacionNegocio.Eliminar(id);
-                    dgvCalificacion.DataSource = CalificacionNegocio.Listar();
+                    //dgvCalificacion.DataSource = CalificacionNegocio.Listar();
+                    MostrarCalificaciones(CalificacionNegocio.Listar());
                 }
             }
             catch (Exception ex)
@@ -159,7 +162,8 @@ namespace CapaPresentacion
 
                 CalificacionNegocio.Modificar(calificacion);
                 txtNota.Clear();
-                dgvCalificacion.DataSource = CalificacionNegocio.Listar();
+                //dgvCalificacion.DataSource = CalificacionNegocio.Listar();
+                MostrarCalificaciones(CalificacionNegocio.Listar());
 
             }
             catch (Exception ex)
@@ -180,8 +184,9 @@ namespace CapaPresentacion
                 //leo que estudiante eligio el usuario
                 int idEstudiante = Convert.ToInt32(cboEstudiante.SelectedValue);
                 //le pido a negocio sus calificaciones y las pongo en el grid
-                DataTable tabla =  CalificacionNegocio.ListarPorEstudiante(idEstudiante);
-                dgvCalificacion.DataSource = tabla;
+                DataTable tabla = CalificacionNegocio.ListarPorEstudiante(idEstudiante);
+                //dgvCalificacion.DataSource = tabla;
+                MostrarCalificaciones(tabla);
 
                 decimal promedio = CalificacionNegocio.CalcularPromedio(tabla);
                 string condicion = CalificacionNegocio.ObtenerCondicion(promedio);
@@ -189,10 +194,21 @@ namespace CapaPresentacion
                 lblPromedio.Text = "Promedio: " + Math.Round(promedio, 2); //uso Math.Round para redondear a dos decimales. C# convierte el número a texto solo
                 lblCondicion.Text = condicion; //Muestra lo que devolvió ObtenerCondicion
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void MostrarCalificaciones(DataTable tabla)
+        {
+            dgvCalificacion.DataSource = tabla;
+
+            dgvCalificacion.Columns["idCalificaciones"].Visible = false;
+            dgvCalificacion.Columns["idEstudiante"].Visible = false;
+
+            dgvCalificacion.Columns["nombreEstudiante"].DisplayIndex = 0;
+        }
+
     }
 }

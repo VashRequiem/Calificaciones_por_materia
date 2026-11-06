@@ -50,15 +50,15 @@
             // 
             dgvCalificacion.BackgroundColor = Color.Linen;
             dgvCalificacion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCalificacion.Location = new Point(52, 203);
+            dgvCalificacion.Location = new Point(52, 279);
             dgvCalificacion.Name = "dgvCalificacion";
-            dgvCalificacion.Size = new Size(506, 184);
+            dgvCalificacion.Size = new Size(593, 200);
             dgvCalificacion.TabIndex = 0;
             dgvCalificacion.CellClick += dgvCalificacion_CellClick;
             // 
             // btnListar
             // 
-            btnListar.Location = new Point(321, 174);
+            btnListar.Location = new Point(300, 140);
             btnListar.Name = "btnListar";
             btnListar.Size = new Size(75, 23);
             btnListar.TabIndex = 1;
@@ -69,7 +69,7 @@
             // cboMateria
             // 
             cboMateria.FormattingEnabled = true;
-            cboMateria.Location = new Point(201, 99);
+            cboMateria.Location = new Point(191, 99);
             cboMateria.Name = "cboMateria";
             cboMateria.Size = new Size(121, 23);
             cboMateria.TabIndex = 2;
@@ -78,7 +78,7 @@
             // cboEstudiante
             // 
             cboEstudiante.FormattingEnabled = true;
-            cboEstudiante.Location = new Point(52, 99);
+            cboEstudiante.Location = new Point(57, 100);
             cboEstudiante.Name = "cboEstudiante";
             cboEstudiante.Size = new Size(121, 23);
             cboEstudiante.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(402, 174);
+            btnAgregar.Location = new Point(57, 140);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 4;
@@ -96,15 +96,15 @@
             // 
             // txtNota
             // 
-            txtNota.Location = new Point(651, 335);
+            txtNota.Location = new Point(318, 99);
             txtNota.Name = "txtNota";
-            txtNota.Size = new Size(100, 23);
+            txtNota.Size = new Size(57, 23);
             txtNota.TabIndex = 5;
             // 
             // lblNota
             // 
             lblNota.AutoSize = true;
-            lblNota.Location = new Point(612, 338);
+            lblNota.Location = new Point(318, 81);
             lblNota.Name = "lblNota";
             lblNota.Size = new Size(33, 15);
             lblNota.TabIndex = 6;
@@ -112,8 +112,8 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.BackColor = Color.Crimson;
-            btnEliminar.Location = new Point(483, 174);
+            btnEliminar.BackColor = Color.PaleVioletRed;
+            btnEliminar.Location = new Point(219, 140);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(75, 23);
             btnEliminar.TabIndex = 7;
@@ -123,7 +123,7 @@
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(662, 364);
+            btnModificar.Location = new Point(138, 140);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(75, 23);
             btnModificar.TabIndex = 8;
@@ -133,9 +133,9 @@
             // 
             // btnConsultar
             // 
-            btnConsultar.Location = new Point(662, 132);
+            btnConsultar.Location = new Point(505, 94);
             btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(75, 23);
+            btnConsultar.Size = new Size(86, 23);
             btnConsultar.TabIndex = 9;
             btnConsultar.Text = "Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             // lblPromedio
             // 
             lblPromedio.AutoSize = true;
-            lblPromedio.Location = new Point(703, 99);
+            lblPromedio.Location = new Point(518, 125);
             lblPromedio.Name = "lblPromedio";
             lblPromedio.Size = new Size(59, 15);
             lblPromedio.TabIndex = 10;
@@ -153,7 +153,7 @@
             // lblCondicion
             // 
             lblCondicion.AutoSize = true;
-            lblCondicion.Location = new Point(623, 99);
+            lblCondicion.Location = new Point(518, 140);
             lblCondicion.Name = "lblCondicion";
             lblCondicion.Size = new Size(62, 15);
             lblCondicion.TabIndex = 11;
@@ -162,7 +162,7 @@
             // lblEstudiante
             // 
             lblEstudiante.AutoSize = true;
-            lblEstudiante.Location = new Point(52, 81);
+            lblEstudiante.Location = new Point(52, 82);
             lblEstudiante.Name = "lblEstudiante";
             lblEstudiante.Size = new Size(62, 15);
             lblEstudiante.TabIndex = 12;
@@ -171,7 +171,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(201, 81);
+            label2.Location = new Point(191, 81);
             label2.Name = "label2";
             label2.Size = new Size(47, 15);
             label2.TabIndex = 13;
@@ -181,7 +181,7 @@
             // 
             lblCalificaciones.AutoSize = true;
             lblCalificaciones.BackColor = Color.Snow;
-            lblCalificaciones.Location = new Point(52, 182);
+            lblCalificaciones.Location = new Point(52, 252);
             lblCalificaciones.Name = "lblCalificaciones";
             lblCalificaciones.Size = new Size(80, 15);
             lblCalificaciones.TabIndex = 14;
@@ -192,7 +192,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Beige;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(687, 551);
             Controls.Add(lblCalificaciones);
             Controls.Add(label2);
             Controls.Add(lblEstudiante);
